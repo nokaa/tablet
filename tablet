@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function echo_help() {
+        echo "USAGE:
+        mount           Mount a connected device at ~/Nexus
+        unmount         Unmount the device at ~/Nexus
+        help            Print this message";
+}
+
+if [ "$1" == "mount" ]; then
+        jmtpfs ~/Nexus;
+elif [ "$1" == "unmount" ]; then
+        fusermount -u ~/Nexus;
+elif [ "$1" == "help" ]; then
+        echo_help;
+else
+        echo "Invalid command:" $1;
+        echo_help;
+fi
